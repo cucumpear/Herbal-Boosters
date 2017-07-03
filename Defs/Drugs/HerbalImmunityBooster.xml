@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HerbalImmunityBooster>
+
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>HerbalImmunityBooster</defName>
+    <label>herbal immunity booster</label>
+    <description>A herbal drug for boosting immunity. Easy to produce, but not very potent and it won't block diseases.</description>
+    <graphicData>
+      <texPath>Booster</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+	  <color>(225,60,130)</color>
+    </graphicData>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>400</WorkToMake>
+      <MarketValue>12</MarketValue>
+      <Mass>0.002</Mass>
+    </statBases>
+    <techLevel>Neolithic</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+	  <foodType>Processed, Fluid</foodType>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.18,0,0)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BoosterHigh</hediffDef>
+          <severity>1</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+     <recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <HerbalMedicine>2</HerbalMedicine>
+	  <RawBerries>5</RawBerries>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1200</listOrder>
+        <overdoseSeverityOffset>
+          <min>0.01</min>
+          <max>0.03</max>
+        </overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <HediffDef>
+    <defName>BoosterHigh</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>immunity booster</label>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.75</severityPerDay>
+      </li>
+    </comps>
+		<stages>
+			<li>
+				<minSeverity>0.5</minSeverity>
+					<capMods>
+						<li>
+							<capacity>BloodFiltration</capacity>
+							<offset>0.07</offset>
+						</li>
+					</capMods>
+			</li>
+       </stages>
+  </HediffDef>
+  
+</HerbalImmunityBooster>

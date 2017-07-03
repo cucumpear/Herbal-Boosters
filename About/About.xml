@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Herbal Boosters</name>
+  <author>cucumpear</author>
+  <targetVersion>0.17.0</targetVersion>
+  <description>Adds two types of herbal medication to treat illnesses and infections. They will not grant immunity the way penoxy does, but they will increase blood filtration. The concentrated version will also act as a mild painkiller. You may also craft an antiparasitical concoction that will protect from gut worms and muscle parasites for two days. The concentrated immunity booster and bulk recipes for all three must be made in the drug lab.</description>
+</ModMetaData>

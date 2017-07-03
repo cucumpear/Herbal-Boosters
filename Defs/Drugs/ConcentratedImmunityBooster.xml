@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ConcentratedImmunityBooster>
+
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>ConcentratedImmunityBooster</defName>
+    <label>concentrated immunity booster</label>
+    <description>A more potent version of the herbal immunity booster. Not as good as the industrial version and won't block diseases. Due to the smokeleaf used it will act as a mild painkiller.</description>
+    <graphicData>
+      <texPath>Booster</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+	  <color>(230,125,60)</color>
+    </graphicData>
+	<socialPropernessMatters>false</socialPropernessMatters>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>500</WorkToMake>
+      <MarketValue>15</MarketValue>
+      <Mass>0.002</Mass>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+	  <foodType>Processed, Fluid</foodType>
+	  <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.18,0,0)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>StrongBoosterHigh</hediffDef>
+          <severity>1</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+     <recipeMaker>
+      <researchPrerequisite>DrugProduction</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <HerbalMedicine>3</HerbalMedicine>
+	  <RawBerries>7</RawBerries>
+	  <SmokeleafLeaves>4</SmokeleafLeaves>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1300</listOrder>
+        <overdoseSeverityOffset>
+          <min>0.03</min>
+          <max>0.08</max>
+        </overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <HediffDef>
+    <defName>StrongBoosterHigh</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>concentrated immunity booster</label>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.6</severityPerDay>
+      </li>
+    </comps>
+		<stages>
+			<li>
+				<painOffset>-0.15</painOffset>
+				<label>mild pain relief</label>
+			</li>
+			<li>
+				<minSeverity>0.5</minSeverity>
+					<capMods>
+						<li>
+							<capacity>BloodFiltration</capacity>
+							<offset>0.15</offset>
+						</li>
+					</capMods>
+			</li>
+       </stages>
+  </HediffDef>
+  
+</ConcentratedImmunityBooster>

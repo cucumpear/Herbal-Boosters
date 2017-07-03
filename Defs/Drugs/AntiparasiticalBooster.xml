@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HerbalImmunityBooster>
+
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>AntiparasiticalBooster</defName>
+    <label>antiparasitical booster</label>
+    <description>A herbal drug that will prevent gutworms and nuscle parasites when taken every other day. A bit expensive to craft.</description>
+    <graphicData>
+      <texPath>Booster</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+	  <color>(60,115,195)</color>
+    </graphicData>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>400</WorkToMake>
+      <MarketValue>12</MarketValue>
+      <Mass>0.002</Mass>
+    </statBases>
+    <techLevel>Neolithic</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+	  <foodType>Processed, Fluid</foodType>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.18,0,0)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AntiparasiticalHigh</hediffDef>
+          <severity>1</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+     <recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <HerbalMedicine>2</HerbalMedicine>
+	  <RawBerries>7</RawBerries>
+	  <RawRice>10</RawRice>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1200</listOrder>
+        <overdoseSeverityOffset>
+          <min>0.01</min>
+          <max>0.03</max>
+        </overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <HediffDef>
+    <defName>AntiparasiticalHigh</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>antiparasitical booster</label>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.4</severityPerDay>
+      </li>
+    </comps>
+		<stages>
+        <li>
+          <makeImmuneTo>
+				<li>GutWorms</li>
+				<li>MuscleParasites</li>
+		  </makeImmuneTo>
+		</li>
+       </stages>
+  </HediffDef>
+  
+</HerbalImmunityBooster>
